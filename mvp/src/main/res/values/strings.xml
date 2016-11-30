@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MVPDemo</string>
+
+    <string name="username">USERNAME</string>
+    <string name="password">PASSWOED</string>
+    <string name="login">login</string>
+    <string name="clear">clear</string>
+</resources>
