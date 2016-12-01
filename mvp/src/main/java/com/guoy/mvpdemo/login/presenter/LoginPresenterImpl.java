@@ -1,5 +1,8 @@
 package com.guoy.mvpdemo.login.presenter;
 
+import android.os.Handler;
+import android.os.Message;
+
 import com.guoy.mvpdemo.login.view.LoginView;
 
 /**
@@ -8,33 +11,53 @@ import com.guoy.mvpdemo.login.view.LoginView;
  * Description: 登录逻辑处理实现类
  */
 
-public class LoginPresenterImpl implements LoginPresenter {
+public class LoginPresenterImpl {
     private LoginView mLoginView;
+    private Message msg;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    mLoginView.setMessage("恭喜您!账号密码正确!");
+                    break;
+                case 2:
+                    mLoginView.setMessage("对不起!账号密码错误!");
+                    break;
+            }
+        }
+    };
 
     public LoginPresenterImpl(LoginView view) {
         mLoginView = view;
     }
 
     /**
-     * 点击登录
+     * 登录功能
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return true 登录成功 false 登录失败
      */
-    @Override
     public boolean Login(String username, String password) {
-        if (username == "a" && password == "a") {
+        msg = new Message();
+        if (username.equals("admin") && password.equals("123")) {
             //登录成功
-            mLoginView.setMessage("恭喜您!账号密码正确!");
+            msg.what = 1;
+            mHandler.sendMessage(msg);
             return true;
         } else {
             //登录失败
-            mLoginView.setMessage("对不起!账号密码错误!");
+            msg.what = 2;
+            mHandler.sendMessage(msg);
             return false;
         }
     }
 
     /**
-     * 重置输入
+     * 重新输入
      */
-    @Override
     public void Claer() {
         mLoginView.setUserName("");
         mLoginView.setPassWord("");

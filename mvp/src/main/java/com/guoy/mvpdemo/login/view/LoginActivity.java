@@ -1,4 +1,4 @@
-package com.guoy.mvpdemo;
+package com.guoy.mvpdemo.login.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.guoy.mvpdemo.R;
 import com.guoy.mvpdemo.login.presenter.LoginPresenterImpl;
-import com.guoy.mvpdemo.login.view.LoginView;
 
 /**
  * http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0414/4143.html	选择恐惧症的福音！教你认清MVC，MVP和MVVM	泡在网上的日志
